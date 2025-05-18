@@ -50,29 +50,24 @@ This project aims to answer:
 ![Co-occurence Matrix](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/co-occurence%20matrix.png)
 ---
 
-## 🛠️ How it works
+## 🛠️ Methodology
 
-- 🔍 **Zero-Shot Multi-Label Classification** via `facebook/bart-large-mnli`
-- 🧠 **Rule-Based Fallback** for cases where no category meets a confidence threshold
-- 💬 **Sentiment Analysis** using Vader and RoBERTa
-- 📊 **DataFrame Output** with one column per category (binary flags)
-- 📈 **Visualizations** showing category frequency and sentiment distribution
+### 1. Data Preprocessing
+- **Text Cleaning**: Changing text case to lower case and removing special characters.
+- **Tokenization**: Breaking the reviews into individual words.
+- **Stopword Removal**: Removing unimmportant words that don't add value to the model e.g and, or, up, down, etc.
+- **Lemmatization**: Reducing words to theeir basic form e.g seating -> seat.
 
----
+### 2. Topic Modelling
+This is a 2-step assignment of categories to the reviews. Multiple categories can be assigned to a single review.
+- 🔍 **Zero-Shot Multi-Label Classification** via `facebook/bart-large-mnli` with a custom label list
+  `["customer service", "flight delay", "in-flight meal", "seating", "entertainment options", "wifi availability", "check-in process", "luggage"]`
+- 🧠 **Rule-Based Fallback**: Keyword-based pattern matching in the custsomer reviews. For cases where no category meets the specified threshold, the fallback function is triggered.
 
-## 🧪 Classification Pipeline
+### 3. Sentiment Analysis
+- 💬 **Sentiment Analysis** using Vader
+- 💬 **Sentiment Analysis** using RoBERTa
 
-1. **Preprocess Text**
-2. **Zero-Shot Classification**
-   - Multi-label mode
-   - Custom label list:  
-     `["customer service", "flight delay", "in-flight meal", "seating", "entertainment options", "wifi availability", "check-in process", "luggage"]`
-3. **Threshold Check**
-   - If no category > confidence threshold (e.g., 0.45), fallback triggered
-4. **Rule-Based Fallback**
-   - Keyword-based pattern matching
-5. **Update DataFrame**
-   - Add category flags as new columns
 
 ---
 
@@ -89,19 +84,3 @@ This project aims to answer:
 - Add new categories
 - Dashboard with filters
 - Track trends over time
-
-## 🚀 How to Run
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/your-username/ba-review-analysis.git
-cd ba-review-analysis
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run the classification
-python run_analysis.py
-
-# 4. View results
-open analysis/visualizations/category_frequency.png
