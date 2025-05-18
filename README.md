@@ -34,13 +34,11 @@ This project aims to answer:
 
 ## 🧩 Key Findings
 
+### Sample Output
 | Review Snippet | customer service | flight delay | in-flight meal | ... |
 |----------------|------------------|---------------|----------------|-----|
 | "The staff was rude and unhelpful" | 1 | 0 | 0 | ... |
 | "Delayed for 2 hours, no Wi-Fi"    | 0 | 1 | 0 | ... |
-
-
-## 📊 Sample Visualizations
 
 - 📌 **Frequent Categories**
 ![Category Count](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/cat_count.png)
@@ -67,7 +65,6 @@ This is a 2-step assignment of categories to the reviews. Multiple categories ca
 ### 3. Sentiment Analysis
 - 💬 **Sentiment Analysis** using Vader
 - 💬 **Sentiment Analysis** using RoBERTa
-
 
 ---
 
