@@ -25,7 +25,6 @@ This project aims to answer:
 - **How do customers feel about specific aspects like customer service, food, or Wi-Fi?**
 - **Which categories (e.g., ‘flight delay’) are most associated with negative sentiment?**
 - **Are customer complaints driven more by people (staff) or systems (delays, check-in)?**
-- **How does sentiment differ across service categories?**
 
 ## 📂 Data
 
@@ -35,16 +34,18 @@ This project aims to answer:
 ## 🧩 Key Findings
 
 ### Sample Output
-| Review Snippet | customer service | flight delay | in-flight meal | ... |
-|----------------|------------------|---------------|----------------|-----|
-| "The staff was rude and unhelpful" | 1 | 0 | 0 | ... |
-| "Delayed for 2 hours, no Wi-Fi"    | 0 | 1 | 0 | ... |
+| Review      Snippet | customer    service | flight    delay | in-flight    meal | ... |
+|--------------------|----------------------|-----------------|-------------------|-----|
+| "The service was rude, full of attitude to me, the food is poorly serviced" | 1 | 0 | 1 | ... |
+| "BA continues to get its mojo back starting with a classy lounge serving innovative, and interesting, quality pre-flight food"    | 0 | 0 | 1 | ... |
 
-- 📌 **Frequent Categories**
+- 📌 **Frequent Categories**: Reviews about customer service, overall flight experience and seat comfort had the highest numbers
+  
 ![Category Count](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/cat_count.png)
   
 - 📊 **Sentiment Distribution**: Per category
-- 🧮 **Category Co-occurrence Matrix**
+- 🧮 **Category Co-occurrence Matrix**: Most reviews about cusstomer seervice also touched on overall flight experinece
+
 ![Co-occurence Matrix](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/co-occurence%20matrix.png)
 ---
 
@@ -53,17 +54,19 @@ This project aims to answer:
 ### 1. Data Preprocessing
 - **Text Cleaning**: Changing text case to lower case and removing special characters.
 - **Tokenization**: Breaking the reviews into individual words.
-- **Stopword Removal**: Removing unimmportant words that don't add value to the model e.g and, or, up, down, etc.
-- **Lemmatization**: Reducing words to theeir basic form e.g seating -> seat.
+- **Stopword Removal**: Removing unimportant words that don't add value to the model e.g and, or, up, down, etc.
+- **Lemmatization**: Reducing words to their basic form e.g seating -> seat.
 
 ### 2. Topic Modelling
 This is a 2-step assignment of categories to the reviews. Multiple categories can be assigned to a single review.
 - 🔍 **Zero-Shot Multi-Label Classification** via `facebook/bart-large-mnli` with a custom label list
   `["customer service", "flight delay", "in-flight meal", "seating", "entertainment options", "wifi availability", "check-in process", "luggage"]`
-- 🧠 **Rule-Based Fallback**: Keyword-based pattern matching in the custsomer reviews. For cases where no category meets the specified threshold, the fallback function is triggered.
+- 🧠 **Rule-Based Fallback**: Keyword-based pattern matching in the customer reviews. For cases where no category meets the specified threshold, the fallback function is triggered.
 
 ### 3. Sentiment Analysis
 - 💬 **Sentiment Analysis** using Vader
+  - Lexicon improved by customizing with airline-focused lexicon e.g 'rude staff', 'comfortable seats' etc
+  - Assigns scores across positive, negative, neutral and compound.
 - 💬 **Sentiment Analysis** using RoBERTa
 
 ---
