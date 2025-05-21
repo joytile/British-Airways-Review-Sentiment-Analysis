@@ -9,6 +9,7 @@
 
 Analyze 3,500+ British Airways passenger reviews using **Zero-Shot Classification**, **Sentiment Analysis**, and a **rule-based fallback system** to uncover actionable business insights.
 
+![Sentiment Distribution](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/Sentiment%20distribution.png)
 ## 📌 Objective
 
 To extract meaningful patterns from unstructured customer reviews that help British Airways:
@@ -43,10 +44,15 @@ This project aims to answer:
   
 ![Category Count](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/cat_count.png)
   
-- 📊 **Sentiment Distribution**: Per category
-- 🧮 **Category Co-occurrence Matrix**: Most reviews about cusstomer seervice also touched on overall flight experinece
+- 📊 **Sentiment Distribution**: Most reviews were negative (54%). Per category, customer service had the highest number of negative reviews.
+
+  ![Sentdistbycat](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/Sentiment%20Distribution%20by%20category.png)
+- 🧮 **Category Co-occurrence Matrix**: Most reviews about customer service also touched on overall flight experience indicating that the interactions between customers and cabin crew is crucial for customer satisfaction.
 
 ![Co-occurence Matrix](https://github.com/joytile/British-Airways-Review-Sentiment-Analysis/blob/main/co-occurence%20matrix.png)
+
+- Model Performance: From the comparison, we can see that
+  - Roberta performed better in terms of 
 ---
 
 ## 🛠️ Methodology
@@ -68,6 +74,12 @@ This is a 2-step assignment of categories to the reviews. Multiple categories ca
   - Lexicon improved by customizing with airline-focused lexicon e.g 'rude staff', 'comfortable seats' etc
   - Assigns scores across positive, negative, neutral and compound.
 - 💬 **Sentiment Analysis** using RoBERTa
+  - A transformer model, cardiffnlp/twitter-roberta-base-sentiment
+  - Better at analyzing complex sentiments
+  - Returns scores for positive, negative and neutral sentiments.
+ 
+### 4. Model Comparison
+- Comparative analysis betweeen Roberta and Vader models
 
 ---
 
