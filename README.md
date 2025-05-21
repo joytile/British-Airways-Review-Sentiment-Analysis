@@ -2,7 +2,7 @@
 
 
 ![GitHub](https://img.shields.io/badge/Language-Python-blue)
-![GitHub](https://img.shields.io/badge/Model-Vader-purple)
+![GitHub](https://img.shields.io/badge/Model-RoBERTa-purple)
 ![GitHub](https://img.shields.io/badge/Library-HuggingFace-Green)
 
 ## Project Overview
